@@ -1474,7 +1474,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
   }
 
   void setup_dateTimeEdit() {
-
     auto* dateTimeEdit = new QDateTimeEdit(windowContent);
     dateTimeEdit->setMinimumDate(QDate::currentDate().addDays(-365));
     dateTimeEdit->setMaximumDate(QDate::currentDate().addDays(365));
@@ -1505,43 +1504,43 @@ SandboxWindow::SandboxWindow(QWidget* parent)
   _impl->beginSetupUi();
   {
     // Uncomment the line to show the corresponding widget.
-    //  _impl->setupUI_label();
-    //  _impl->setupUI_button();
-    //  _impl->setupUI_buttonVariants();
-    //  _impl->setupUI_checkbox();
-    //  _impl->setupUI_radioButton();
-    //  _impl->setupUI_commandLinkButton();
-    //  _impl->setupUI_sliderAndProgressBar();
-    //  _impl->setupUI_sliderWithTicks();
-    //  _impl->setupUI_lineEdit();
-    //  _impl->setupUI_dial();
-    //  _impl->setupUI_spinBox();
-    //  _impl->setupUI_comboBox();
-    //  _impl->setupUI_listView();
-    //  _impl->setupUI_treeWidget();
-    //  _impl->setupUI_table();
-    //  _impl->setupUI_menu();
-    //  _impl->setupUI_toolButton();
-    //  _impl->setupUI_toolButtonsVariants();
-    //  _impl->setupUI_tabBar();
-    //  _impl->setupUI_tabWidget();
-    //  _impl->setupUI_groupBox();
-    //  _impl->setupUI_fontMetricsTests();
-    //  _impl->setupUI_messageBox();
-    //  _impl->setupUI_messageBoxIcons();
-    //  _impl->setupUi_treeView();
-    //  _impl->setupUi_expander();
-    //  _impl->setupUi_popover();
-    //  _impl->setupUi_navigationBar();
-    //  _impl->setupUi_switch();
-    //  _impl->setupUi_blur();
-    //  _impl->setupUi_focus();
-    //  _impl->setup_badge();
-    //  _impl->setup_specialProgressBar();
-    //  _impl->setup_lineEditStatus();
-    //  _impl->setup_colorButton();
-    //  _impl->setup_themeEditor();
-    //  _impl->setup_dateTimeEdit();
+    _impl->setupUI_label();
+    _impl->setupUI_button();
+    _impl->setupUI_buttonVariants();
+    _impl->setupUI_checkbox();
+    _impl->setupUI_radioButton();
+    _impl->setupUI_commandLinkButton();
+    _impl->setupUI_sliderAndProgressBar();
+    _impl->setupUI_sliderWithTicks();
+    _impl->setupUI_lineEdit();
+    _impl->setupUI_dial();
+    _impl->setupUI_spinBox();
+    _impl->setupUI_comboBox();
+    _impl->setupUI_listView();
+    _impl->setupUI_treeWidget();
+    _impl->setupUI_table();
+    _impl->setupUI_menu();
+    _impl->setupUI_toolButton();
+    _impl->setupUI_toolButtonsVariants();
+    _impl->setupUI_tabBar();
+    _impl->setupUI_tabWidget();
+    _impl->setupUI_groupBox();
+    _impl->setupUI_fontMetricsTests();
+    //_impl->setupUI_messageBox();
+    _impl->setupUI_messageBoxIcons();
+    _impl->setupUi_treeView();
+    _impl->setupUi_expander();
+    _impl->setupUi_popover();
+    _impl->setupUi_navigationBar();
+    _impl->setupUi_switch();
+    _impl->setupUi_blur();
+    _impl->setupUi_focus();
+    _impl->setup_badge();
+    _impl->setup_specialProgressBar();
+    _impl->setup_lineEditStatus();
+    _impl->setup_colorButton();
+    _impl->setup_themeEditor();
+    _impl->setup_dateTimeEdit();
   }
   _impl->endSetupUi();
 }

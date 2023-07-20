@@ -12,6 +12,7 @@
 #include <QSettings>
 #include <QMessageBox>
 #include <QStandardPaths>
+#include <QSpinBox>
 
 #define ADD_TITLE(TEXT) \
   formLayout->addItem(new QSpacerItem(0, vSpacing * 3, QSizePolicy::Ignored, QSizePolicy::Fixed)); \
@@ -28,6 +29,15 @@
     const auto pair = makeColorEditorAndLabel(#NAME, DESCRIPTION, &owner, theme.NAME, [this](const QColor& c) { \
       theme.NAME = c; \
       emit owner.themeChanged(theme); \
+    }); \
+    this->NAME##Editor = pair.second; \
+    formLayout->addRow(pair.first, pair.second); \
+  }
+
+#define ADD_METRICS_EDITOR(NAME, DESCRIPTION) \
+  { \
+    const auto pair = makeSpinBoxAndLabel(#NAME, DESCRIPTION, &owner, [this](const int& i) { \
+      theme.NAME = i; \
     }); \
     this->NAME##Editor = pair.second; \
     formLayout->addRow(pair.first, pair.second); \
@@ -104,7 +114,30 @@ std::pair<QWidget*, LineEdit*> makeTextEditorAndLabel(const QString& label, cons
   return { leftColumn, lineEdit };
 }
 
+std::pair<QWidget*, QSpinBox*> makeSpinBoxAndLabel(
+  const QString& label, const QString& description, QWidget* parent, const std::function<void(const int&)>& onChanged) {
+  auto* spinBox = new QSpinBox(parent);
+  spinBox->setRange(0, 100);
+
+  auto* leftColumn = new QWidget(parent);
+  auto* leftColumnLayout = new QVBoxLayout(leftColumn);
+  leftColumnLayout->setContentsMargins(0, 0, 0, 0);
+  const auto vSpacing = leftColumn->style()->pixelMetric(QStyle::PM_LayoutVerticalSpacing);
+  leftColumnLayout->setSpacing(vSpacing / 4);
+  auto* nameLabel = new Label(label, TextRole::Default, leftColumn);
+  nameLabel->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+  leftColumnLayout->addWidget(nameLabel);
+  if (!description.isEmpty()) {
+    auto* descriptionLabel = new Label(description, TextRole::Caption, leftColumn);
+    leftColumnLayout->addWidget(descriptionLabel);
+  }
+
+  return { leftColumn, spinBox };
+}
+
 struct ThemeEditor::Impl {
+  QSpinBox* fontSizeEditor;
+
   ColorEditor* primaryColorEditor;
   ColorEditor* primaryColorHoveredEditor;
   ColorEditor* primaryColorPressedEditor;
@@ -259,6 +292,8 @@ struct ThemeEditor::Impl {
   void setupColorEditors(QFormLayout* formLayout, int vSpacing) {
     // Primary Color.
     ADD_TITLE("Primary Color");
+
+    ADD_METRICS_EDITOR(fontSize, "Font Size");
 
     //ADD_SUBTITLE("Background");
     //ADD_DESCRIPTION("Highlighting selected elements, checked elements, default buttons, etc.");
