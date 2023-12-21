@@ -175,7 +175,7 @@ Theme::Theme(QString const& jsonPath)
 
 void Theme::initializeFonts() {
   // Fonts.
-  const auto defaultFont = QFont(QStringLiteral("Inter"));
+  const auto defaultFont = QFont(QStringLiteral("Microsoft YaHei"));
   const auto fixedFont = QFont(QStringLiteral("Roboto Mono"));
   const auto dpi = QGuiApplication::primaryScreen()->logicalDotsPerInch();
   fontRegular = defaultFont;
