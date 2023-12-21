@@ -174,7 +174,7 @@ public:
   using QWidget::QWidget;
 
   QColor bgColor{ Qt::red };
-  QColor borderColor { Qt::black };
+  QColor borderColor{ Qt::black };
   QSize customSizeHint{ -1, -1 };
   bool showBounds{ true };
 
@@ -602,7 +602,7 @@ struct SandboxWindow::Impl {
     // Context menu.
     qDebug() << listView->contextMenuPolicy();
     listView->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
-    QObject::connect(listView, &QListView::customContextMenuRequested, listView, [listView](const QPoint& pos){
+    QObject::connect(listView, &QListView::customContextMenuRequested, listView, [listView](const QPoint& pos) {
       if (const auto item = listView->itemAt(pos)) {
         QMenu contextMenu(listView);
         //contextMenu.setTearOffEnabled(true);
@@ -1499,32 +1499,34 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
     plainWidget->bgColor = QColor(230, 230, 230);
     plainWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    auto* contextMenuEvtFilter = new ContextMenuEventFilter(plainWidget, [plainWidget](QContextMenuEvent* e){
-        // Create menu.
-        QMenu menu;
+    auto* contextMenuEvtFilter = new ContextMenuEventFilter(plainWidget, [plainWidget](QContextMenuEvent* e) {
+      // Create menu.
+      QMenu menu;
 
-        const auto cb = [](){ qDebug() << "Clicked"; };
-        const auto clickPos = e->pos();
-        const auto clickPosStr = QString("(%1, %2)").arg(clickPos.x()).arg(clickPos.y());
-        menu.addAction(QString("Pos: %1").arg(clickPosStr), cb , Qt::CTRL + Qt::Key_A);
+      const auto cb = []() {
+        qDebug() << "Clicked";
+      };
+      const auto clickPos = e->pos();
+      const auto clickPosStr = QString("(%1, %2)").arg(clickPos.x()).arg(clickPos.y());
+      menu.addAction(QString("Pos: %1").arg(clickPosStr), cb, Qt::CTRL + Qt::Key_A);
 
-        const auto randomCount = getRandomInt(1, 10);
-        for (auto i = 0; i < randomCount; ++i) {
-          const auto textLength = i * 4;
-          QStringList textList;
-          for (auto n = 0; n < textLength; ++n) {
-            textList.append("A");
-          }
-
-          menu.addAction(textList.join("") + QString(" %1").arg(i), cb, Qt::ALT + Qt::SHIFT + Qt::Key_0 + i);
+      const auto randomCount = getRandomInt(1, 10);
+      for (auto i = 0; i < randomCount; ++i) {
+        const auto textLength = i * 4;
+        QStringList textList;
+        for (auto n = 0; n < textLength; ++n) {
+          textList.append("A");
         }
 
-        // Show menu.
-        menu.exec(plainWidget->mapToGlobal(clickPos));
+        menu.addAction(textList.join("") + QString(" %1").arg(i), cb, Qt::ALT + Qt::SHIFT + Qt::Key_0 + i);
+      }
 
-        // Mark as handled.
-        e->setAccepted(true);
-        return true;
+      // Show menu.
+      menu.exec(plainWidget->mapToGlobal(clickPos));
+
+      // Mark as handled.
+      e->setAccepted(true);
+      return true;
     });
 
     plainWidget->installEventFilter(contextMenuEvtFilter);
@@ -1556,47 +1558,47 @@ SandboxWindow::SandboxWindow(QWidget* parent)
   _impl->beginSetupUI();
   {
     // Uncomment the line to show the corresponding widget.
-//      _impl->setupUI_label();
-//      _impl->setupUI_button();
-//      _impl->setupUI_buttonVariants();
-//      _impl->setupUI_checkbox();
-//      _impl->setupUI_radioButton();
-//      _impl->setupUI_commandLinkButton();
-//      _impl->setupUI_sliderAndProgressBar();
-//      _impl->setupUI_sliderWithTicks();
-//      _impl->setupUI_lineEdit();
-//      _impl->setupUI_dial();
-//      _impl->setupUI_spinBox();
-//      _impl->setupUI_comboBox();
-//      _impl->setupUI_listView();
-//      _impl->setupUI_treeWidget();
-//      _impl->setupUI_table();
-//      _impl->setupUI_menuBar();
-//      _impl->setupUI_toolButton();
-//      _impl->setupUI_toolButtonsVariants();
-//      _impl->setupUI_tabBar();
-//      _impl->setupUI_tabWidget();
-//      _impl->setupUI_groupBox();
-//      _impl->setupUI_treeView();
-//      _impl->setupUI_focus();
-//      _impl->setupUI_specialProgressBar();
-//      _impl->setupUI_lineEditStatus();
-//      _impl->setupUI_dateTimeEdit();
-//      _impl->setupUI_plainTextEdit();
-//      _impl->setupUI_contextMenu();
+    _impl->setupUI_label();
+    _impl->setupUI_button();
+    _impl->setupUI_buttonVariants();
+    _impl->setupUI_checkbox();
+    _impl->setupUI_radioButton();
+    _impl->setupUI_commandLinkButton();
+    _impl->setupUI_sliderAndProgressBar();
+    _impl->setupUI_sliderWithTicks();
+    _impl->setupUI_lineEdit();
+    _impl->setupUI_dial();
+    _impl->setupUI_spinBox();
+    _impl->setupUI_comboBox();
+    _impl->setupUI_listView();
+    _impl->setupUI_treeWidget();
+    _impl->setupUI_table();
+    _impl->setupUI_menuBar();
+    _impl->setupUI_toolButton();
+    _impl->setupUI_toolButtonsVariants();
+    _impl->setupUI_tabBar();
+    _impl->setupUI_tabWidget();
+    _impl->setupUI_groupBox();
+    _impl->setupUI_treeView();
+    _impl->setupUI_focus();
+    _impl->setupUI_specialProgressBar();
+    _impl->setupUI_lineEditStatus();
+    _impl->setupUI_dateTimeEdit();
+    _impl->setupUI_plainTextEdit();
+    _impl->setupUI_contextMenu();
 
-//      _impl->setupUI_switch();
-//      _impl->setupUI_expander();
-//      _impl->setupUI_popover();
-//      _impl->setupUI_navigationBar();
-//      _impl->setupUI_badge();
-//      _impl->setupUI_colorButton();
+    //      _impl->setupUI_switch();
+    //      _impl->setupUI_expander();
+    //      _impl->setupUI_popover();
+    //      _impl->setupUI_navigationBar();
+    //      _impl->setupUI_badge();
+    //      _impl->setupUI_colorButton();
 
-//      _impl->setupUI_messageBoxIcons();
-//      _impl->setupUI_fontMetricsTests();
-//      _impl->setupUI_blur();
-//      _impl->setupUI_themeEditor();
-//      _impl->setupUI_messageBox();
+    //      _impl->setupUI_messageBoxIcons();
+    //      _impl->setupUI_fontMetricsTests();
+    //      _impl->setupUI_blur();
+    //      _impl->setupUI_themeEditor();
+    //      _impl->setupUI_messageBox();
   }
   _impl->endSetupUI();
 }
