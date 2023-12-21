@@ -165,10 +165,10 @@ public: // Values.
   int animationDuration{ 192 };
   int focusAnimationDuration{ 384 };
   int sliderAnimationDuration{ 96 };
-  double borderRadius{ 6. };
-  double checkBoxBorderRadius{ 4. };
-  double menuItemBorderRadius{ 4. };
-  double menuBarItemBorderRadius{ 2. };
+  double borderRadius{ 2.5 };
+  double checkBoxBorderRadius{ 2.5 };
+  double menuItemBorderRadius{ 2.5 };
+  double menuBarItemBorderRadius{ 2.5 };
   int borderWidth{ 1 };
   int controlHeightLarge{ 28 };
   int controlHeightMedium{ 24 };
