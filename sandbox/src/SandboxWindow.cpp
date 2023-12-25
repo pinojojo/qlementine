@@ -1597,7 +1597,7 @@ SandboxWindow::SandboxWindow(QWidget* parent)
     //      _impl->setupUI_messageBoxIcons();
     //      _impl->setupUI_fontMetricsTests();
     //      _impl->setupUI_blur();
-    //      _impl->setupUI_themeEditor();
+    _impl->setupUI_themeEditor();
     //      _impl->setupUI_messageBox();
   }
   _impl->endSetupUI();
