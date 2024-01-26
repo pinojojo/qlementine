@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
   style->setAnimationsEnabled(true);
   style->setUseMenuForComboBoxPopup(false);
   style->setAutoIconColor(oclero::qlementine::AutoIconColor::TextColor);
-  style->setThemeJsonPath(QStringLiteral(":/dark.json"));
+  style->setThemeJsonPath(QStringLiteral(":/darkblue.json"));
   qApplication.setStyle(style);
 #endif
 

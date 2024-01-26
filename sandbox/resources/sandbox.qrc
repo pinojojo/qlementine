@@ -1,6 +1,7 @@
 <RCC>
 	<qresource>
 		<file>dark.json</file>
+		<file>darkblue.json</file>
 		<file>light.json</file>
 		<file>qlementine_icon.ico</file>
 		<file>qlementine_icon.icns</file>
