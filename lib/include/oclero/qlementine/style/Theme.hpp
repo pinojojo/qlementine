@@ -156,7 +156,7 @@ public: // Values.
 
   int fontSize{ 9 };
   int fontSizeMonospace{ 9 };
-  int fontSizeH1{ 25 };
+  int fontSizeH1{ 55 };
   int fontSizeH2{ 19 };
   int fontSizeH3{ 16 };
   int fontSizeH4{ 13 };
