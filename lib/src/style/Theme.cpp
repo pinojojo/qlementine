@@ -179,11 +179,11 @@ void Theme::initializeFonts() {
   const auto fixedFont = QFont(QStringLiteral("Roboto Mono"));
   const auto dpi = QGuiApplication::primaryScreen()->logicalDotsPerInch();
   fontRegular = defaultFont;
-  fontRegular.setWeight(QFont::Weight::Normal);
+  fontRegular.setWeight(45);
   fontRegular.setPointSizeF(pixelSizeToPointSize(fontSize, dpi));
 
   fontBold = defaultFont;
-  fontBold.setWeight(QFont::Weight::Bold);
+  fontBold.setWeight(65);
   fontBold.setPointSizeF(pixelSizeToPointSize(fontSize, dpi));
 
   fontH1 = defaultFont;
