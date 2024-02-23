@@ -710,7 +710,7 @@ struct SandboxWindow::Impl {
     const auto icon = makeIconFromSvg(":/refresh.svg", owner.iconSize());
 
     for (auto i = 0; i < 5; ++i) {
-      auto* menu = menuBar->addMenu(QString("Menu &%1").arg(i));
+      auto* menu = menuBar->addMenu(QString("菜单 &%1").arg(i));
 
       for (auto j = 0; j < 10; ++j) {
         auto* action = menu->addAction(icon, QString("Menu %1 - Action &%2").arg(i).arg(j));
@@ -1587,16 +1587,16 @@ SandboxWindow::SandboxWindow(QWidget* parent)
     _impl->setupUI_plainTextEdit();
     _impl->setupUI_contextMenu();
 
-    //      _impl->setupUI_switch();
-    //      _impl->setupUI_expander();
-    //      _impl->setupUI_popover();
-    //      _impl->setupUI_navigationBar();
-    //      _impl->setupUI_badge();
-    //      _impl->setupUI_colorButton();
+    _impl->setupUI_switch();
+    _impl->setupUI_expander();
+    _impl->setupUI_popover();
+    _impl->setupUI_navigationBar();
+    _impl->setupUI_badge();
+    _impl->setupUI_colorButton();
 
-    //      _impl->setupUI_messageBoxIcons();
-    //      _impl->setupUI_fontMetricsTests();
-    //      _impl->setupUI_blur();
+    _impl->setupUI_messageBoxIcons();
+    _impl->setupUI_fontMetricsTests();
+    _impl->setupUI_blur();
     _impl->setupUI_themeEditor();
     //      _impl->setupUI_messageBox();
   }

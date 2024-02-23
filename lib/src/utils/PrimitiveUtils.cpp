@@ -1252,7 +1252,7 @@ void drawElidedMultiLineText(QPainter& p, const QRect& rect, const QString& text
       line.draw(&p, rect.topLeft());
     } else {
       const auto lineText = removeTrailingWhitespaces(textLayout.text().mid(line.textStart(), line.textLength()));
-      const auto ellipsis = QString("…");
+      const auto ellipsis = QString("...");
       const auto ellipsisWidth = qlementine::textWidth(fontMetrics, ellipsis);
       auto elidedLineText = removeTrailingWhitespaces(
         fontMetrics.elidedText(lineText, Qt::TextElideMode::ElideRight, maxWidth - ellipsisWidth, Qt::TextSingleLine));

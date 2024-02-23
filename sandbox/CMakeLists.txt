@@ -1,24 +1,31 @@
 find_package(Qt${QT_DEFAULT_MAJOR_VERSION}
   COMPONENTS
-    Core
-    Widgets
+  Core
+  Widgets
   REQUIRED
 )
 
 add_executable(sandbox WIN32 MACOSX_BUNDLE)
+
+# Tell MSVC to use UTF-8 source files
+if(MSVC)
+  target_compile_options(sandbox PRIVATE "/utf-8")
+endif()
+
 target_sources(sandbox PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/resources/sandbox.qrc
   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/SandboxWindow.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/SandboxWindow.hpp
-  #${CMAKE_CURRENT_SOURCE_DIR}/src/CsdWindow.cpp
-  #${CMAKE_CURRENT_SOURCE_DIR}/src/CsdWindow.hpp
+
+  # ${CMAKE_CURRENT_SOURCE_DIR}/src/CsdWindow.cpp
+  # ${CMAKE_CURRENT_SOURCE_DIR}/src/CsdWindow.hpp
 )
 target_link_libraries(sandbox
   PRIVATE
-    oclero::qlementine
-    Qt::Core
-    Qt::Widgets
+  oclero::qlementine
+  Qt::Core
+  Qt::Widgets
 )
 
 set_target_properties(sandbox PROPERTIES
@@ -29,5 +36,5 @@ set_target_properties(sandbox PROPERTIES
   AUTORCC ON
 )
 
-############# Minimal example ends here #############
+# ############ Minimal example ends here #############
 target_deploy_qt(sandbox)
