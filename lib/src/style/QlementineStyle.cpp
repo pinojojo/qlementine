@@ -310,15 +310,15 @@ AutoIconColor QlementineStyle::autoIconColor(const QWidget* widget) const {
   return property.value<AutoIconColor>();
 }
 
-QPixmap QlementineStyle::getColorizedPixmap(const QPixmap& input, AutoIconColor autoIconColor,
-                                            const QColor& fgColor, const QColor& textColor) const {
+QPixmap QlementineStyle::getColorizedPixmap(
+  const QPixmap& input, AutoIconColor autoIconColor, const QColor& fgColor, const QColor& textColor) const {
   switch (autoIconColor) {
-  case AutoIconColor::None:
-    return input;
-  case AutoIconColor::ForegroundColor:
-    return qlementine::getColorizedPixmap(input, fgColor);
-  case AutoIconColor::TextColor:
-    return qlementine::getColorizedPixmap(input, textColor);
+    case AutoIconColor::None:
+      return input;
+    case AutoIconColor::ForegroundColor:
+      return qlementine::getColorizedPixmap(input, fgColor);
+    case AutoIconColor::TextColor:
+      return qlementine::getColorizedPixmap(input, textColor);
   }
   return input;
 }
@@ -1199,7 +1199,7 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
         const auto& fm = optTab->fontMetrics;
         const auto textAvailableWidth = rect.width() - (iconSize.isEmpty() ? 0 : iconSize.width() + spacing);
         const auto elidedText = fm.elidedText(optTab->text, Qt::ElideMiddle, textAvailableWidth, Qt::TextSingleLine);
-        const auto hasText = elidedText != QStringLiteral("…");
+        const auto hasText = elidedText != QStringLiteral("...");
 
         // TODO handle expanding QTabBar.
         //const auto textW = hasText ? fm.boundingRect(rect, Qt::AlignLeft, elidedText).width() : 0;
@@ -2010,7 +2010,8 @@ void QlementineStyle::drawControl(ControlElement ce, const QStyleOption* opt, QP
         const auto contentRect = totalRect.marginsRemoved({ contentLeftPadding, 0, contentRightPadding, 0 });
         const auto pixmap =
           getPixmap(optComboBox->currentIcon, optComboBox->iconSize, mouse, CheckState::NotChecked, w);
-        const auto& colorizedPixmap = getColorizedPixmap(pixmap, autoIconColor(w), fgColor, fgColor); // No animation for icon?
+        const auto& colorizedPixmap =
+          getColorizedPixmap(pixmap, autoIconColor(w), fgColor, fgColor); // No animation for icon?
         const auto iconW = colorizedPixmap.isNull() ? 0 : colorizedPixmap.width() / colorizedPixmap.devicePixelRatio();
         const auto iconSpacing = iconW > 0 ? spacing : 0;
         auto availableW = contentRect.width();
@@ -2999,8 +3000,7 @@ void QlementineStyle::drawComplexControl(
             fm.elidedText(groupBoxOpt->text, Qt::ElideRight, textRect.width(), Qt::TextSingleLine);
           const auto mouse = getMouseState(groupBoxOpt->state);
           const auto& textColor = groupBoxTitleColor(mouse, w);
-          constexpr auto textFlags =
-            Qt::AlignVCenter | Qt::AlignBaseline | Qt::TextSingleLine | Qt::AlignLeft;
+          constexpr auto textFlags = Qt::AlignVCenter | Qt::AlignBaseline | Qt::TextSingleLine | Qt::AlignLeft;
           p->setFont(font);
           p->setPen(textColor);
           p->setRenderHint(QPainter::Antialiasing, true);
@@ -5125,7 +5125,8 @@ QColor const& QlementineStyle::frameBackgroundColor(MouseState const mouse) cons
     return _impl->theme.backgroundColorMain1;
 }
 
-QColor const& QlementineStyle::buttonBackgroundColor(MouseState const mouse, ColorRole const role, const QWidget* w) const {
+QColor const& QlementineStyle::buttonBackgroundColor(
+  MouseState const mouse, ColorRole const role, const QWidget* w) const {
   Q_UNUSED(w)
   const auto primary = role == ColorRole::Primary;
 
@@ -5144,7 +5145,8 @@ QColor const& QlementineStyle::buttonBackgroundColor(MouseState const mouse, Col
   }
 }
 
-QColor const& QlementineStyle::buttonForegroundColor(MouseState const mouse, ColorRole const role, const QWidget* w) const {
+QColor const& QlementineStyle::buttonForegroundColor(
+  MouseState const mouse, ColorRole const role, const QWidget* w) const {
   Q_UNUSED(w)
   const auto primary = role == ColorRole::Primary;
 

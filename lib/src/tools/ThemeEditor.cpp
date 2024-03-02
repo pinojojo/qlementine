@@ -201,7 +201,7 @@ struct ThemeEditor::Impl {
 
     // 'Load' button.
     {
-      auto* loadJsonButton = new QPushButton(QIcon::fromTheme("document-open"), "Load JSON file…", parent);
+      auto* loadJsonButton = new QPushButton(QIcon::fromTheme("document-open"), "Load JSON file...", parent);
       loadJsonButton->setToolTip("Load a JSON file from disk.");
       loadJsonButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
       rowLayout->addWidget(loadJsonButton);
@@ -228,7 +228,7 @@ struct ThemeEditor::Impl {
 
     // 'Save' button.
     {
-      auto* saveJsonButton = new QPushButton(QIcon::fromTheme("document-save"), "Save JSON file…", parent);
+      auto* saveJsonButton = new QPushButton(QIcon::fromTheme("document-save"), "Save JSON file...", parent);
       saveJsonButton->setToolTip("Save the current theme as JSON file to disk.");
       saveJsonButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
       rowLayout->addWidget(saveJsonButton);
