@@ -1175,10 +1175,12 @@ QPainterPath getTabPath(QRect const& rect, const RadiusesF& radiuses) {
 
 void drawTab(QPainter* p, QRect const& rect, const RadiusesF& radius, const QColor& bgColor, bool drawShadow,
   const QColor& shadowColor) {
+  Q_UNUSED(shadowColor);
+  Q_UNUSED(radius);
   if (drawShadow) {
-    drawTabShadow(p, rect, radius, shadowColor);
+    //drawTabShadow(p, rect, radius, shadowColor);
   }
-  const auto path = getTabPath(rect, radius);
+  const auto path = getTabPath(rect, 1.);
   p->setRenderHint(QPainter::Antialiasing, true);
   p->setPen(Qt::NoPen);
   p->setBrush(bgColor);
